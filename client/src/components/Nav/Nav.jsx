@@ -13,7 +13,7 @@ export default function Nav({onSearch, logout}) {
   return (
     <>
       <NavContainer>
-          <h2>NavBar <span>Responsive</span></h2>
+          <h2>Menu <span>Countries</span></h2>
           <div className={`links ${clicked ? 'active' : ''}`}>
             <NavLink exact to='/home' activeClassName='active'>Home</NavLink>
             <NavLink exact to='/touring' activeClassName='active'>Tourist Activities</NavLink>
@@ -48,7 +48,7 @@ const NavContainer = styled.nav`
 
 
   .links{
-    position: -1000px;
+    position: absolute;
     top: -1400px;
     left: -2000px;
     margin-left: auto;
@@ -75,7 +75,7 @@ const NavContainer = styled.nav`
     position:absolute;
     margin-left: auto;
     margin-right: auto;
-    top:30%;
+    top:5%;
     left:0;
     right:0;
     text-align: center;
