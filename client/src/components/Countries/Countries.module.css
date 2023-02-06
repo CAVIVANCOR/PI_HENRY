@@ -1,0 +1,8 @@
+.countries{
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items:center;
+    justify-content: space-around;
+    border: 8px solid rgb(194, 121, 121)
+}

@@ -9,7 +9,6 @@ import TouringForm from './components/TouringForm/TouringForm.jsx';
 
 function App() {
   const [access,setAcces] = useState(false);
-  const [countries,setCountries] = useState([]);
 
   let ubicacion = useLocation();
   let navigate = useHistory();
@@ -34,7 +33,7 @@ function App() {
       {ubicacion.pathname !== "/" ? <Nav onSearch={onSearch} logout={logout}/> : null}
       <Switch>
         <Route exact path="/"> <Welcome login={login}/> </Route>
-        <Route exact path="/home"> <Countries countries={countries}/> </Route>
+        <Route exact path="/home"> <Countries /> </Route>
         <Route exact path="/detail/:id"> <Detail /> </Route>
         <Route exact path="/touring"> <TouringForm/> </Route>
       </Switch>
