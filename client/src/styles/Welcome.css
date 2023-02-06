@@ -1,66 +1,33 @@
-* {
-  margin:0;
-  padding:0;
+.contenedor-welcome{
+    box-sizing: border-box;
+    width:70%;
+    height: auto;
+    margin: 0;
+    overflow: hidden;
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items:center;
+    justify-content:center;
+    background-color: rgb(235, 240, 238);
+    box-shadow: 0 10px 43px 1px rgb(0 0 0 / 29%);
+    font-family: 'Open Sans Condensed', sans-serif;
 }
 
-html,
-body {
-  font-size:10px;
-  background-color: #f6f7f8;
+h1{
+    color:#3C3C3C
 }
-
-/* For mobile phones: */
-[class*="col-"] {
-  width: 100%;
+h2{
+    color:#3C3C3C
 }
-
-@media only screen and (min-width: 600px) {
-  /* For tablets: */
+p{
+    color:#3C3C3C
 }
-
-@media only screen and (min-width: 768px) {
-  /* For desktop: */
+.contenedor-imagen{
+    width: 70%;
+    height: fit-content(25em);
+    margin: 5px;
 }
-
-
-h1 {
-  font-family: 'Droid Sans';
-  max-width:100%;
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-h2 {
-  font-family: 'Roboto';
-  max-width:100%;
-  font-size: 1.5rem;
-  margin: 5px;
-}
-
-p {
-  font-family: 'Oxygen';
-  max-width:100%;
-  font-size: 1.1rem;
-  margin: 10px;
-}
-
-.App{
-  min-height: 100vh;
-  display:flex;
-  flex-wrap: wrap;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-}
-
-
-
-/* 
-========================
-      CSS BOTONES
-========================
-*/
-
 
 div[class*=box] {
 	height: 33.33%;

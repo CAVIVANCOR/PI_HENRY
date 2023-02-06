@@ -1,0 +1,30 @@
+.contenedor-nav{
+    padding: .4rem;
+    background-color: #3C3C3C;
+    display:flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+h1{
+    color:#686767
+}
+
+h2{
+    color:white;
+    font-weight: 400;
+}
+
+span{
+    font-weight: bold;
+}
+
+p{
+    color:#3C3C3C
+}
+.contenedor-imagen{
+    width: 70%;
+    height: fit-content(25em);
+    margin: 5px;
+}
+

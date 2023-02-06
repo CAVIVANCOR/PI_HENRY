@@ -13,7 +13,8 @@ function App() {
 
   let ubicacion = useLocation();
   let navigate = useHistory();
-  
+  console.log('ubicacion.pathname',ubicacion.pathname);
+
   const onSearch = () =>{
 
   };
@@ -26,16 +27,17 @@ function App() {
   const logout = () => {
     setAcces(false);
     navigate.push('/');
-  }
+  };
+  
   return (
     <div className="App">
       {ubicacion.pathname !== "/" ? <Nav onSearch={onSearch} logout={logout}/> : null}
-        <Switch>
-          <Route> path="/" <Welcome login={login}/> </Route>
-          <Route> path="/home" <Countries countries={countries}/> </Route>
-          <Route> path="/detail/:id" <Detail /> </Route>
-          <Route> path="/touring" <TouringForm/> </Route>
-        </Switch>
+      <Switch>
+        <Route exact path="/"> <Welcome login={login}/> </Route>
+        <Route exact path="/home"> <Countries countries={countries}/> </Route>
+        <Route exact path="/detail/:id"> <Detail /> </Route>
+        <Route exact path="/touring"> <TouringForm/> </Route>
+      </Switch>
     </div>
   );
 }
