@@ -49,38 +49,44 @@ const NavContainer = styled.nav`
 
   .links{
     position: absolute;
-    top: -1400px;
+    top: -700px;
     left: -2000px;
+    right: 0;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    transition: all .5s ease;
     a{
-      color: black;
+      color: white;
       font-size: 2rem;
-      display:block;
+      display: block;
     }
     @media(min-width: 768px){
-      position:initial;
-      margin:0;
+      position: initial;
+      margin: 0;
       a{
         font-size: 1rem;
         color: white;
         display: inline;
       }
+      display: block;
     }
   }
+  
   .links.active{
-    width:100%;
-    display:block;
-    position:absolute;
+    width: 100%;
+    display: block;
+    position: absolute;
     margin-left: auto;
     margin-right: auto;
-    top:5%;
-    left:0;
-    right:0;
+    top: 30%;
+    left: 0;
+    right: 0;
     text-align: center;
     a{
-      color:#333;
+      font-size: 2rem;
+      margin-top: 1rem;
+      color: white;
     }
   }
 
