@@ -1,8 +1,11 @@
 const express = require('express');
-const cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');//**esto siver para los CORS */
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const routes = require('./routes/index.js');
+const countriesRoutes = require('./routes/countriesRouter');
+const activitiesRoutes = require('./routes/activitiesRouter');
+
+const { SERVER_PORT } = require('./db.js');
 
 require('./db.js');
 
@@ -10,8 +13,8 @@ const server = express();
 
 server.name = 'API';
 
-server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
-server.use(bodyParser.json({ limit: '50mb' }));
+server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));//** app.use(express.urlencoded({ extended: false })) para recibir datos por el body util en formularios html */
+server.use(bodyParser.json({ limit: '50mb' }));//** app.use(express.json()) para que convierta a json el request*/
 server.use(cookieParser());
 server.use(morgan('dev'));
 server.use((req, res, next) => {
@@ -22,9 +25,10 @@ server.use((req, res, next) => {
   next();
 });
 
-server.use('/', routes);
+server.use('/countries', countriesRoutes);
+server.use('/activities', activitiesRoutes);
 
-// Error catching endware.
+// Error catching endware. Manejo de errores
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   const status = err.status || 500;
   const message = err.message || err;
