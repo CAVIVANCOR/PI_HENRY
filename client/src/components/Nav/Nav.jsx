@@ -5,7 +5,6 @@ import { NavLink } from 'react-router-dom';
 
 export default function Nav({onSearch, logout}) {
   const [clicked,setClicked] = useState(false);
-  console.log(clicked);
   const handleClick = ()=>{
     setClicked(!clicked);
   };

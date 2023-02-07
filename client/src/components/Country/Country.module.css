@@ -1,15 +1,33 @@
-.country{
-    width: 80%;
-    background-color: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin-bottom: 25px;
+.countryCard{
+    padding: 2%;
+    flex: 1 16%;
 }
 
-.container{
-    text-align: center;
-    padding: 10px 20px;
+.countryInfo{
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
 }
 
-.imagen{
-    width:100%
+a{
+    color:black;
+    text-decoration: none;
+}
+
+.countryImage{
+    max-width: 100%;
+}
+
+@media (max-width:920px){
+    .countryCard{
+        padding: 2%;
+        flex: 1 21%;
+        }
+}
+
+@media (max-width:600px){
+    .countryCard{
+        padding: 2%;
+        flex: 1 46%;
+        }
 }

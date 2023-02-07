@@ -1,10 +1,7 @@
-import Burguer from './BuguerStyle';
+import Burguer from './BurguerStyle';
 import React from 'react'
 
 export default function BurguerButton(props) {
-  console.log('props',props);
-  console.log(`icon nav-icon-5 ${props.clicked ? 'open' : ''}`)
-
   return (
     <Burguer>
       <div  onClick={props.handleClick} 

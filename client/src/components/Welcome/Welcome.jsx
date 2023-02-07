@@ -16,9 +16,9 @@ export default function Welcome({login}) {
       <h2>Programador FullStack</h2>
       <h2>Carlos Alberto Vivanco Rodriguez</h2>
       <p>Febrero 2023</p>
-      <div class="box-2">
-        <div class="btn btn-two">
-          <span onClick={login}>HOVER ME</span>
+      <div className="box-2">
+        <div className="btn btn-two">
+          <span onClick={login}>I N G R E S A R</span>
         </div>
       </div>
     </div>

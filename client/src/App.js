@@ -12,8 +12,6 @@ function App() {
 
   let ubicacion = useLocation();
   let navigate = useHistory();
-  console.log('ubicacion.pathname',ubicacion.pathname);
-
   const onSearch = () =>{
 
   };

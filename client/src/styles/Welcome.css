@@ -21,7 +21,8 @@ h2{
     color:#3C3C3C
 }
 p{
-    color:#3C3C3C
+    color:#3C3C3C;
+	text-decoration: none;
 }
 .contenedor-imagen{
     width: 70%;
