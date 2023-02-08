@@ -39,18 +39,19 @@ export default function Pagination({countriesPerPage,currentPage,setCurrentPage,
     <div>
     <nav className={styles.pagination}>
         <div className={styles.paginationList}>
-            <button key={v4()} onClick={onPreviousPage} className={topPage?styles.disabled:styles.btn}>Previous</button>
-            <button key={v4()} onClick={onNextPage} className={bottomPage?styles.disabled:styles.btn} >Next</button>
+            <button key={v4()} onClick={onPreviousPage} className={topPage?styles.disabled:styles.button}>Previous</button>
+            <button key={v4()} onClick={onNextPage} className={bottomPage?styles.disabled:styles.button} >Next</button>
         </div>
-        <ul className={styles.paginationList}>
+        <div><p>Pagina {currentPage}</p></div>
+        <div className={styles.paginationList}>
             {
-                pageNumbers.map(nPage=>(
-                    <div key={v4()}>
-                        <button key={v4()} onClick={()=>onIrPage(nPage)} className={styles.btn}>{nPage}</button>
-                    </div>
-                ))
+            pageNumbers.map(nPage=>(
+            <div key={v4()}>
+                <button key={v4()} onClick={()=>onIrPage(nPage)} className={styles.button}>{nPage}</button>
+            </div>
+            ))
             }
-        </ul>
+        </div>
     </nav>
     </div>
   )

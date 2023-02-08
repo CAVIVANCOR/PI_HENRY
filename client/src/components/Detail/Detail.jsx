@@ -1,6 +1,5 @@
 import styles from './Detail.module.css';
 import React, { useEffect } from 'react';
-import { v4 } from 'uuid';
 import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCuntryById } from '../../redux/actions';
