@@ -8,7 +8,7 @@ export default function Pagination({countriesPerPage,currentPage,setCurrentPage,
     const [bottomPage,setBottomPage]=useState(false);
 
     const pageNumbers=[];
-    for (let i = 1; i <= Math.ceil(totalCountries/countriesPerPage); i++) {
+    for (let i = 1; i <= (Math.ceil(totalCountries/countriesPerPage)+1); i++) {
         pageNumbers.push(i);
     };
     const onPreviousPage =()=>{

@@ -1,5 +1,5 @@
 import axios from 'axios';
-const {GET_ALL_COUNTRIES, AGREGAR_ACTIVIDAD_TURISTICA, FILTRAR_PAISES, ORDENAR_PAISES} = require('./actions-types');
+const {GET_ALL_COUNTRIES, GET_COUNTRY_BY_ID, AGREGAR_ACTIVIDAD_TURISTICA, FILTRAR_PAISES, ORDENAR_PAISES} = require('./actions-types');
 
 export const getAllCountries=()=>{
     return async function(dispatch){
@@ -10,6 +10,16 @@ export const getAllCountries=()=>{
         });
     };
 };
+
+export const getCuntryById=(id)=>{
+    return async function(dispatch){
+        let country = await axios.get('http://localhost:3001/countries/'+id);
+        return dispatch({
+            type:GET_COUNTRY_BY_ID,
+            payload:country.data
+        })
+    }
+}
 
 export const agregarActividadTuristica = (activity)=>{
     return {
