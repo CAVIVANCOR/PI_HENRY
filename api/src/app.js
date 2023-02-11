@@ -5,8 +5,6 @@ const morgan = require('morgan');
 const countriesRoutes = require('./routes/countriesRouter');
 const activitiesRoutes = require('./routes/activitiesRouter');
 
-const { SERVER_PORT } = require('./db.js');
-
 require('./db.js');
 
 const server = express();

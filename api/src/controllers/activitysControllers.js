@@ -3,7 +3,7 @@ const {Op}=require("sequelize");
 
 const creaActivityTuristic = async(activity, countries) => {
     const newActivity = await Activities.create(activity);
-    console.log('newActivity',newActivity);
+    //console.log('newActivity',newActivity);
     await newActivity.addCountries(countries);
     return newActivity;
 };
