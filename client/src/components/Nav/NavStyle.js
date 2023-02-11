@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const NavContainer = styled.nav`
   h2{
+    font-size: 2rem;
     color: white;
     font-weight: 400;
     span{
@@ -13,13 +14,23 @@ export const NavContainer = styled.nav`
   display:flex;
   align-items:center;
   justify-content: space-between;
-  
+  z-index: 9999;
+
   a{
     color: white;
     text-decoration: none;
     margin-right: 1rem;
   }
+.cursor{
+  padding: .4rem;
+  cursor:pointer;
+  font-weight: bold;
+  font-weight: 400;
+  color: white;
+  font-size: 2rem;
+  align-items:center;
 
+}
 
   .links{
     position: absolute;
@@ -30,6 +41,8 @@ export const NavContainer = styled.nav`
     margin-right: auto;
     text-align: center;
     transition: all .5s ease;
+    display:flex;
+    flex-direction: row;
     a{
       color: white;
       font-size: 2rem;
@@ -43,7 +56,6 @@ export const NavContainer = styled.nav`
         color: white;
         display: inline;
       }
-      display: block;
     }
   }
   

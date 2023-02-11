@@ -1,6 +1,6 @@
 import './App.css';
-import React, { useState } from 'react'
 import { Route, useLocation, Switch, useHistory } from 'react-router-dom';
+import React, { useState } from 'react'
 import Countries from './components/Countries/Countries.jsx';
 import Detail from './components/Detail/Detail.jsx';
 import Welcome from './components/Welcome/Welcome.jsx';
@@ -12,9 +12,7 @@ function App() {
 
   let ubicacion = useLocation();
   let navigate = useHistory();
-  const onSearch = () =>{
 
-  };
 
   const login = () =>{
     setAcces(true);
@@ -27,16 +25,16 @@ function App() {
   };
   
   return (
-    <div className="App">
-      {ubicacion.pathname !== "/" ? <Nav onSearch={onSearch} logout={logout}/> : null}
-      <Switch>
-        <Route exact path="/"> <Welcome login={login}/> </Route>
-        <Route exact path="/home"> <Countries /> </Route>
-        <Route exact path="/detail/:id"> <Detail /> </Route>
-        <Route exact path="/touring"> <TouringForm/> </Route>
-      </Switch>
-    </div>
+      <div className="App">
+        {ubicacion.pathname !== "/" ? <Nav logout={logout}/> : null}
+          <Switch>
+            <Route exact path="/"> <Welcome login={login}/> </Route>
+            <Route exact path="/home"> <Countries /> </Route>
+            <Route exact path="/detail/:id"> <Detail /> </Route>
+            <Route exact path="/touring"> <TouringForm/> </Route>
+          </Switch>
+        </div>
   );
-}
+};
 
 export default App;

@@ -6,7 +6,7 @@ import { getCuntryById } from '../../redux/actions';
 import { armaActivities } from './actividades.js';
 
 export default function Detail() {
-  const parametros=useParams();
+  const parametros = useParams();
   const dispatch = useDispatch();
   const country = useSelector((state)=>state.countryDetail);
   const navigate = useHistory();
@@ -42,14 +42,3 @@ export default function Detail() {
 }
 
 
-// {
-//   "id": "PAN",
-//   "name": "Republic of Panama",
-//   "flags": "https://flagcdn.com/w320/pa.png",
-//   "continent": "North America",
-//   "capital": "Panama City",
-//   "subregion": "Central America",
-//   "area": 75417,
-//   "population": 4314768,
-//   "activities": []
-// }
