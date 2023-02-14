@@ -21,7 +21,7 @@ const findCountries = async (name) => {
             }
         }
     });
-    //if (countries.length===0) throw Error(`Error: No se encontro ningun Pais con el nombre: ${name} !`);
+    if (countries.length===0) throw Error(`Error: No se encontro ningun Pais con el nombre: ${name} !`);
     return countries;
 };
 
