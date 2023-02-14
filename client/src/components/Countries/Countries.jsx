@@ -2,7 +2,7 @@ import styles from './Countries.module.css';
 import React, { useEffect, useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import Country from '../Country/Country';
-import { agregarErrorSearch, filterCountriesByActivities, filterCountriesByContinent, getActivitiesTuristic, getAllCountries, getCountriesByName, OrderByName, OrderByPoblation } from '../../redux/actions.js';
+import { agregarErrorSearch, filterCountriesByActivities, filterCountriesByContinent, getActivitiesTuristic, getAllCountries, OrderByName, OrderByPoblation } from '../../redux/actions.js';
 import { v4 } from 'uuid';
 import Pagination from '../Pagination/Pagination';
 import Search from '../Search/Search';
@@ -18,7 +18,6 @@ export default function Countries() {
   const dispatch = useDispatch();
   const countries = useSelector((state)=>state.countries);
   const activities = useSelector((state)=>state.activities);
-  const errorSearch = useSelector((state)=>state.errorSearch);
 
   const navigate = useHistory();
   const location= useLocation();
@@ -26,7 +25,6 @@ export default function Countries() {
   let {search} =location;
   let query = new URLSearchParams(search);
   let paginaMostrar = Number(query.get('page'));
-  let nombreMostrar = query.get('name');
 
   if (!paginaMostrar) paginaMostrar=1;
 
@@ -37,7 +35,6 @@ export default function Countries() {
   useEffect(()=>{
     dispatch(getAllCountries());
     dispatch(getActivitiesTuristic());
-    console.log("entro al useEffect");
   },[dispatch,navigate]);
   
   const getAllContinentes = (countriesData)=>{
@@ -67,13 +64,6 @@ export default function Countries() {
   let continentes = getAllContinentes(countries);
   let actividades = getAllActivities(activities);
 
-  if (nombreMostrar){
-    console.log('nombreMostrar',nombreMostrar);
-    dispatch(getCountriesByName(nombreMostrar));
-  }
-
-
-
   const handlefilterContinent=(event)=>{
     event.preventDefault();
     const continentSelect = event.target.value;
@@ -83,13 +73,11 @@ export default function Countries() {
       setContinenteElegido("Filtrado Continente "+continentSelect);
     }
     dispatch(filterCountriesByContinent(continentSelect));
-    navigate.push("/home?page="+(currentPage)+"&")
-
+    navigate.push("/home?page="+(currentPage))
   };
 
   const handlefilterActivity=(event)=>{
     event.preventDefault();
-    //console.log('handlefilterActivity',event.target.value);
     const activitySelect = event.target.value;
     if (activitySelect==="Todos"){
       setActividadElegida("");
@@ -100,7 +88,6 @@ export default function Countries() {
   };
 
   const handleSortName=(event)=>{
-    //console.log('Entro a handleSortName');
     event.preventDefault();
     dispatch(OrderByName(event.target.value))
     setCurrentPage(1);
@@ -108,7 +95,6 @@ export default function Countries() {
   };
 
   const handleSortPoblation = (event)=>{
-    //console.log('Entro a handleSortPoblation');
     event.preventDefault();
     dispatch(OrderByPoblation(event.target.value))
     setCurrentPage(1);
@@ -116,15 +102,14 @@ export default function Countries() {
   };
 
   const handleMostrarTodos=()=>{
-  //console.log('hola entre');
-  setActividadElegida("");
-  setContinenteElegido("");
-  setOrdenado("");
-  setCurrentPage(1);
-  navigate.push('/home');
-  dispatch(getAllCountries());
-  dispatch(getActivitiesTuristic());
-  dispatch(agregarErrorSearch(""))
+    setActividadElegida("");
+    setContinenteElegido("");
+    setOrdenado("");
+    setCurrentPage(1);
+    navigate.push('/home');
+    dispatch(getAllCountries());
+    dispatch(getActivitiesTuristic());
+    dispatch(agregarErrorSearch(""))
   }
   
   let totalCountries = 0;
@@ -148,9 +133,8 @@ export default function Countries() {
       lastIndex = (currentPage * countriesPerPage)-1;
       firstIndex = lastIndex - countriesPerPage;
       countriesMostrar = countries.slice(firstIndex,lastIndex);
-    }
-
-  }
+    };
+  };
 
 
   return (

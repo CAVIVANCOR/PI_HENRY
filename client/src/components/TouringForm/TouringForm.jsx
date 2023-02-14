@@ -8,7 +8,6 @@ import { validateTouringInput } from './validate';
 
 export default function TouringForm() {
   const countries = useSelector((state)=> state.countries);
-  const activities = useSelector((state)=> state.activities);
   const dispatch = useDispatch();
   const navigation = useHistory();
 
@@ -121,7 +120,6 @@ export default function TouringForm() {
     event.preventDefault();
     if (Object.entries(errorInput).length === 0){
       dispatch(agregarActividadTuristica(touringInput));
-    //  console.log('Personaje Creado',touringInput);
       setTouringInput({
         activity:{
           name: "",
@@ -133,7 +131,6 @@ export default function TouringForm() {
       navigation.push('/home');
       dispatch(getAllCountries());
       dispatch(getActivitiesTuristic());
-      //console.log('activities',activities);
     };
   };
 
@@ -149,7 +146,6 @@ export default function TouringForm() {
     ));
   };
 
-  console.log('touringInput',touringInput);
   return (
     <div className={styles.container} >
       <h1>Agregar Actividad Turistica</h1>
