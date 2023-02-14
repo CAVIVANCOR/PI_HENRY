@@ -1,0 +1,44 @@
+.filter{
+    display: flex;
+    flex-flow:column nowrap;
+    align-items: center;
+    align-content: center;
+    border: 5px solid  #373838; 
+    background-color: #272929;
+}
+
+.filter h2{
+    color: #31b3b3;
+    font-size: 16px;
+    align-items: center;
+}
+
+.filter label{
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.filter p{
+    color: #31b3b3;
+    font-size: 14px;
+}
+
+
+
+.countriesSort{
+    display: flex;
+    flex-direction: row;
+    align-content: space-around;
+    padding: 5px;
+    margin: 5px;
+    gap: 5px;
+}
+
+
+.countriesSort label{
+        width: 120px;
+    }
+
+.countriesSort select{
+        width: 120px;
+    }

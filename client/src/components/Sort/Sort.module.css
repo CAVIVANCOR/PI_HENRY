@@ -1,0 +1,71 @@
+.countriesSort{
+    display: flex;
+    flex-direction: row;
+    align-content: space-around;
+    padding: 5px;
+    margin: 5px;
+    gap: 5px;
+}
+
+
+.countriesSort label{
+        width: 120px;
+    }
+
+.countriesSort select{
+        width: 120px;
+    }
+
+
+    .sort{
+        display: flex;
+        flex-flow:column nowrap;
+        align-items: center;
+        align-content: center;
+        border: 5px solid  #373838; 
+        background-color: #272929;
+        margin: 5px;
+    }
+    
+    .sort h2{
+        color: #31b3b3;
+        font-size: 16px;
+        align-items: center;
+    }
+    
+    
+    .sort label{
+        color: #ffffff;
+        font-size: 14px;
+    }
+    
+    .sort p{
+        color: #31b3b3;
+        font-size: 14px;
+    }
+
+    
+    
+.button{ 
+    color: #fff; 
+    background: #474949; 
+    border: 3px solid #b8bebe; 
+    min-height: 8px; 
+    padding: 4px 8px; 
+    border-radius: 2px; 
+    font-weight: 600; 
+    font-family: plex-sans,sans-serif; 
+    font-size: 12px; 
+    line-height: 14px; 
+    margin: 0; 
+    box-sizing: border-box; 
+    cursor: pointer; 
+    width:70px;
+    } 
+    
+.button:hover{ 
+    background-color: #05b3a5; 
+    border: 3px solid #05e4d2; 
+    box-sizing:border-box; 
+} 
+    
