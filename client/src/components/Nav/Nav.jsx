@@ -19,10 +19,10 @@ export default function Nav({onSearch, logout}) {
   return (
     <>
       <NavContainer>
-          <h2>Menu <span>Countries</span></h2>
+          <h1>Henry's PI Countries</h1>
           <div className={`links ${clicked ? 'active' : ''}`}>
-            <div className="cursor" onClick={()=>handleCerrareIr('/home')}>Home</div>
-            <div className="cursor" onClick={()=>handleCerrareIr('/touring')}>Tourist Activities</div>
+            <div className="cursor" onClick={()=>handleCerrareIr('/home')}><h2><span>Inicio</span></h2></div>
+            <div className="cursor" onClick={()=>handleCerrareIr('/touring')}><h2><span>Agregar Actividad</span></h2></div>
           </div>
           <div className='burguer'>
             <BurguerButton clicked={clicked} handleClick={handleClick}/>

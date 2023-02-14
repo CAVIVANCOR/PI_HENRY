@@ -13,8 +13,8 @@ export default function Countries() {
   const [currentPage,setCurrentPage]=useState(1);
   const [actividadElegida,setActividadElegida]=useState("");
   const [continenteElegido,setContinenteElegido]=useState("");
-  const [ordenadoName, setOrdenadoName]=useState("");
-  const [ordenadoPoblation, setOrdenadoPoblation]=useState("");
+  const [ordenado, setOrdenado]=useState("");
+  const [errorName,setErrorName] = useState("");
 
   const dispatch = useDispatch();
   const countries = useSelector((state)=>state.countries);
@@ -36,14 +36,15 @@ export default function Countries() {
   useEffect(()=>{
     dispatch(getAllCountries());
     dispatch(getActivitiesTuristic());
-  },[dispatch]);
+    console.log("entro al useEffect");
+  },[dispatch,navigate]);
   
   const getAllContinentes = (countriesData)=>{
     let arrayContinentes = countriesData.map(c=>c.continent);
     const continentesUnicos = arrayContinentes.filter((item,index)=>{
       return (arrayContinentes.indexOf(item) === index);
     })
-    continentesUnicos.push("Todos");
+    if (continenteElegido==="") continentesUnicos.unshift("");
     return continentesUnicos;
   }
 
@@ -55,10 +56,10 @@ export default function Countries() {
       actividadesUnicos = arrayActivities.filter((item,index)=>{
       return (arrayActivities.indexOf(item) === index);
       })
+      actividadesUnicos.unshift("");
     }else{
       actividadesUnicos.push(actividadElegida);
     }
-    actividadesUnicos.push("Todos");
     return actividadesUnicos;
   }
 
@@ -70,10 +71,7 @@ export default function Countries() {
     dispatch(getCountriesByName(nombreMostrar));
   }
 
-  let totalCountries = countries.length;
-  let lastIndex = currentPage * countriesPerPage;
-  let firstIndex = lastIndex - countriesPerPage;
-  let countriesMostrar = countries.slice(firstIndex,lastIndex);
+
 
   const handlefilterContinent=(event)=>{
     event.preventDefault();
@@ -81,7 +79,7 @@ export default function Countries() {
     if (continentSelect==="Todos"){
       setContinenteElegido("");
     }else{
-      setContinenteElegido(continentSelect);
+      setContinenteElegido("Filtrado Continente "+continentSelect);
     }
     dispatch(filterCountriesByContinent(continentSelect));
     navigate.push("/home?page="+(currentPage)+"&")
@@ -90,43 +88,87 @@ export default function Countries() {
 
   const handlefilterActivity=(event)=>{
     event.preventDefault();
+    //console.log('handlefilterActivity',event.target.value);
     const activitySelect = event.target.value;
     if (activitySelect==="Todos"){
       setActividadElegida("");
     }else{
-      setActividadElegida(activitySelect);
+      setActividadElegida("Filtrado Actividad "+activitySelect);
     }
     dispatch(filterCountriesByActivities(activitySelect))
   };
 
   const handleSortName=(event)=>{
-    console.log('Entro a handleSortName');
+    //console.log('Entro a handleSortName');
     event.preventDefault();
     dispatch(OrderByName(event.target.value))
     setCurrentPage(1);
-    event.target.value==="ascN" ? setOrdenadoName("Ordenado Ascendentemente por Nombre") : setOrdenadoName("Ordenado Descendentemente por Nombre")
+    event.target.value==="ascN" ? setOrdenado("Ordenado Ascendentemente por Nombre") : setOrdenado("Ordenado Descendentemente por Nombre")
   };
 
   const handleSortPoblation = (event)=>{
-    console.log('Entro a handleSortPoblation');
+    //console.log('Entro a handleSortPoblation');
     event.preventDefault();
     dispatch(OrderByPoblation(event.target.value))
     setCurrentPage(1);
-   event.target.value==="ascP" ? setOrdenadoName("Ordenado Ascendentemente por Poblacion") : setOrdenadoName("Ordenado Descendentemente por Poblacion")
+   event.target.value==="ascP" ? setOrdenado("Ordenado Ascendentemente por Poblacion") : setOrdenado("Ordenado Descendentemente por Poblacion")
+  };
+
+  const handleMostrarTodos=()=>{
+  //console.log('hola entre');
+  setActividadElegida("");
+  setContinenteElegido("");
+  setOrdenado("");
+  setCurrentPage(1);
+  navigate.push('/home');
+  dispatch(getAllCountries());
+  dispatch(getActivitiesTuristic());
+  setErrorName("");
   }
+  
+  let totalCountries = 0;
+  let lastIndex = 0;
+  let firstIndex = 0;
+  let countriesMostrar = 0;
+
+  if (currentPage===1){
+    totalCountries = countries.length;
+    lastIndex = currentPage * 9;
+    firstIndex = lastIndex - 9;
+    countriesMostrar = countries.slice(firstIndex,lastIndex);
+  }else{
+    if (currentPage===(countries.length/countriesPerPage)){
+      totalCountries = countries.length;
+      lastIndex = currentPage * countriesPerPage;
+      firstIndex = (lastIndex - countriesPerPage)-1;
+      countriesMostrar = countries.slice(firstIndex,lastIndex);
+    }else{
+      totalCountries = countries.length;
+      lastIndex = (currentPage * countriesPerPage)-1;
+      firstIndex = lastIndex - countriesPerPage;
+      countriesMostrar = countries.slice(firstIndex,lastIndex);
+    }
+
+  }
+
 
   return (
     <div className={styles.container}>
         <div>
-          <h1>Home</h1>
+          <h1>Inicio</h1>
         </div>
         <div>
-          <Search />
+          <button className={styles.button} onClick={handleMostrarTodos} >Todos</button>
         </div>
-        <div className={styles.sort}>
-          <div className={styles.countriesSort}>
+        <div className={styles.search}>
+          <Search errorName={errorName} setErrorName={setErrorName}/>
+        </div>
+        <div className={styles.filter}>
             <div>
-              <label>Filtrar Por Continente:</label>
+              <h2>Filtrar Por</h2>
+            </div>
+            <div className={styles.countriesSort}>
+              <label>Continente:</label>
               <select id="filtroxContinente" name="filterContinent" onChange={handlefilterContinent}>
                 {
                   continentes.map((c)=>(
@@ -135,9 +177,9 @@ export default function Countries() {
                 }
               </select>
             </div>
-            <div>
-              <label>Filtrar Por Actividad Turistica:</label>
-              <select id="filtroxActividad" name="filterActivities" onChange={handlefilterActivity}>
+            <div className={styles.countriesSort}>
+              <label>Actividad:</label>
+              <select id="filtroxActividad" name="filtroxActividad" onChange={handlefilterActivity}>
                 {
                   actividades.map((c)=>(
                     <option key={v4()} value={c}>{c}</option>
@@ -145,31 +187,37 @@ export default function Countries() {
                 }
               </select>
             </div>
+            {continenteElegido!=="" ? <div><p>{continenteElegido}</p></div> : null}
+            {actividadElegida!=="" ? <div><p>{actividadElegida}</p></div> : null}
+        </div>
+        <div className={styles.sort}>
+          <div>
+            <h2>Ordenamiento</h2>
           </div>
           <div className={styles.countriesSort}>
-            <label>Ordenar por Nombre:</label>
+            <label>Por Nombre: </label>
             <select id="ordenarName" name="ordenarName" onChange={handleSortName}>
+                <option value=""></option>
                 <option value="ascN">Ascendente</option>
                 <option value="descN">Descendente</option>
               </select>
           </div>
           <div className={styles.countriesSort}>
-            <label>Ordenar por Poblacion:</label>
+            <label>Por Población: </label>
             <select id="ordenarPoblacion" name="ordenarPoblacion" onChange={handleSortPoblation}>
+                <option value=""></option>
                 <option value="ascP">Ascendente</option>
                 <option value="descP">Descendente</option>
               </select>
           </div>
+          {ordenado!=="" ? <div><p>{ordenado}</p></div> : null}
         </div>
+
       <Pagination 
         countriesPerPage={countriesPerPage} 
         currentPage={currentPage} 
         setCurrentPage={setCurrentPage} 
         totalCountries={totalCountries}
-        actividadElegida={actividadElegida}
-        continenteElegido={continenteElegido}
-        ordenadoName={ordenadoName}
-        ordenadoPoblation={ordenadoPoblation}
       />
       <div className={styles.countries}>
         {countriesMostrar && countriesMostrar.map((country)=>(

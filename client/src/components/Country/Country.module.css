@@ -1,19 +1,54 @@
 .countryCard{
-    padding: 2%;
-    flex: 1 16%;
+    padding: 0.5%;
+    width: auto;
+    justify-content: center;
+    background-color:#23303b;
+    margin:0.5%;
+    border-radius: 15px;
+    transition: all 2s;
+    padding: 25px;
+}
+
+.countryCard:hover{
+    background-color:#5d6770;
+    color: #fff;
+    /* -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 0 0 35px;
+    transition-duration: 1500ms;
+    transition: .3s cubic-bezier(.8, .5, .2, 1.4); */
+    border-radius: 15% 0 ;
+    border-color: #0096CF;
 }
 
 .countryInfo{
     margin-top: auto;
     display: flex;
     flex-direction: column;
+    background-color:#20282e;
+    border-radius: 25px;
+    transition: all 1s;
+
 }
 
-p{
-    color:black;
+.countryInfo:hover{
+    border-radius: 15% 0 ;
+    border-color: #0096CF;
+    border: 12px;
+}
+
+.countryInfo p{
+    color:#ffffff;
     text-decoration: none;
     text-align: center;
-    font-size: 16px;
+    font-size: 14px;
+}
+
+.countryInfo h2 span{
+    color:#ffffff;
+    text-decoration: none;
+    text-align: center;
+    font-size: 14px;
     font-weight: bold;
 }
 
@@ -21,8 +56,14 @@ p{
     width: 250px;
     height: 150px;
     border-radius: 10px;
-    box-shadow: 0 0 10px 0;
-    
+    box-shadow: 0 0 0 0;
+    color: #fff;
+    margin: 4%;
+}
+
+.countryImage:hover{
+    box-shadow: 0 0 15px 0;
+    color: #f8f4f4;
 }
 
 @media (max-width:920px){

@@ -1,12 +1,14 @@
 export const armaActivities = (actividades)=>{
+  const arrayDifficulty= ["Principiante","Aficionado","Normal","Profesional","Experto"];
+  let arrayResult=[];
   let actividadesResult = "";
   if (Object.entries(actividades).length>0){
-    let nroRegistros=Object.entries(actividades).length;
     Object.entries(actividades).forEach(([key,value])=>{
+      actividadesResult = "";
       for (const key2 in value) {
         switch (key2) {
             case "difficulty":
-              actividadesResult=actividadesResult+"Dificultad: "+value[key2]+" ";
+              actividadesResult=actividadesResult+"Dificultad: "+arrayDifficulty[value[key2]]+" ";
                 break;
             case "duration":
               actividadesResult=actividadesResult+"Duración: "+value[key2]+" ";
@@ -19,10 +21,11 @@ export const armaActivities = (actividades)=>{
                 break;
         };
       }
-      if (key<(nroRegistros-1)) actividadesResult=actividadesResult+", ";
+      arrayResult.push(actividadesResult);
     })
   }else{
     actividadesResult = "Sin Actividades Turisticas Registradas";
+    arrayResult.push(actividadesResult);
   }
-return actividadesResult;
+return arrayResult;
 }

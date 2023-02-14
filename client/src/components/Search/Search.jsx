@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getCountriesByName } from '../../redux/actions';
 import styles from './Search.module.css';
 
-export default function Search(props) {
+export default function Search({errorName,setErrorName}) {
   const dispatch = useDispatch();
+  const countries = useSelector((state)=>state.countries);
   const [inputName,setInputName] = useState("");
 
   const handleValorName = (event)=>{
@@ -14,14 +15,21 @@ export default function Search(props) {
 
   const handleSubmit = (event)=>{
     event.preventDefault();
-    dispatch(getCountriesByName(inputName));
-    setInputName("");
-    //navigate.push("/home?page="+(currentPage)+'&name='+name)
+    console.log("trim",inputName.trim())
+    if (inputName.trim()!==""){
+      dispatch(getCountriesByName(inputName));
+      setInputName("");
+    }else{
+      setErrorName("Debe Ingresar algun Valor")
+    }
+
   };
   return (
     <div className={styles.container}>
+      <h2>Buscar por: </h2>
       <input type="text" id="name" placeholder="Nombre País" value={inputName} onChange={handleValorName} />
-      <button type="submit" onClick={handleSubmit} >Buscar</button>
+      {errorName!=="" ? <div><p>{errorName}</p></div> : null}
+      <button className={styles.button} type="submit" onClick={handleSubmit} >Buscar</button>
     </div>
   )
 };

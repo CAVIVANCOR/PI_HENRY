@@ -4,10 +4,11 @@ import React, { useState } from 'react'
 import { v4 } from 'uuid';
 import { useHistory } from 'react-router-dom';
 
-export default function Pagination({countriesPerPage,currentPage,setCurrentPage,totalCountries,actividadElegida,continenteElegido,ordenadoName,ordenadoPoblation}) {
+export default function Pagination({countriesPerPage,currentPage,setCurrentPage,totalCountries}) {
     const [topPage,setTopPage]=useState(false);
     const [bottomPage,setBottomPage]=useState(false);
-const navigate = useHistory();
+    const navigate = useHistory();
+
 
     const pageNumbers=[];
     for (let i = 1; i <= (Math.ceil(totalCountries/countriesPerPage)); i++) {
@@ -18,7 +19,7 @@ const navigate = useHistory();
         if (currentPage>1){
             setCurrentPage(currentPage-1);
             setTopPage(false);
-            navigate.push("/home?page="+(currentPage-1)+"&name=")
+            navigate.push("/home?page="+(currentPage-1))
         } else {
             setTopPage(true);
         }
@@ -42,20 +43,15 @@ const navigate = useHistory();
         setBottomPage(false);
         navigate.push("/home?page="+page)
     };
-    console.log('hola Pagination');
 
   return (
     <div>
-    <nav className={styles.pagination}>
-        <div><p>{continenteElegido}</p></div>
-        <div><p>{actividadElegida}</p></div>
-        <div><p>{ordenadoName}</p></div>
-        <div><p>{ordenadoPoblation}</p></div>
+    <div className={styles.pagination}>
         <div className={styles.paginationList}>
             <button key={v4()} onClick={onPreviousPage} className={topPage?styles.disabled:styles.button}>Previous</button>
+            <div><p>Pagina {currentPage}</p></div>
             <button key={v4()} onClick={onNextPage} className={bottomPage?styles.disabled:styles.button} >Next</button>
         </div>
-        <div><p>Pagina {currentPage}</p></div>
         <div className={styles.paginationList}>
             {
             pageNumbers && pageNumbers.map(nPage=>(
@@ -65,7 +61,7 @@ const navigate = useHistory();
             ))
             }
         </div>
-    </nav>
+    </div>
     </div>
   )
 };

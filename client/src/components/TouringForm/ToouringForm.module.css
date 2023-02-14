@@ -1,3 +1,204 @@
-.error {
-    color:red;
+.container{
+    width:100%;
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-width: 15px;
+    border-style: solid;
+    border-image: 
+      linear-gradient(
+        to bottom, 
+        #31b3b3, 
+        rgba(0, 0, 0, 0)
+      ) 1 100%;
+    background-color: #272929;
+    margin:5px;
+    padding:5px;
 }
+
+.formulario {
+    display: flex;
+    flex-flow:column nowrap;
+    align-items: center;
+    align-content: center;
+    border: 5px solid  #417c7c; 
+    background-color: #272929;
+    margin: 5px;
+}
+
+.countriesSelect {
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: 2px solid  #417c7c; 
+    background-color: #272929;
+    column-gap: 3px;
+    margin: 5px;
+    width: 300px;
+    padding: 15px;
+}
+
+.container h1{
+    color: #31b3b3;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 10px;
+    font-weight: 900;
+}
+
+.activities{
+    display: flex;
+    flex-flow:column nowrap;
+    align-items: center;
+    align-content: center;
+    border: 5px solid  #272929; 
+    background-color: #272929;
+    margin: 5px;
+}
+
+.activities h2{
+    color: #31b3b3;
+    font-size: 16px;
+    align-items: center;
+}
+
+
+.activities label{
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.activities p{
+    color: #31b3b3;
+    font-size: 14px;
+}
+
+.activities h4{
+    color: #ec6666;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.activities select{
+    font-size: 12px;
+    display: flex;
+    flex-flow:column nowrap;
+    width: 300px;
+}
+
+.activities input{
+    font-size: 14px;
+    color: #31b3b3;
+    display: flex;
+    flex-flow:column nowrap;
+    width: 300px;
+    font-weight: bold;
+}
+
+.button{ 
+    color: #fff; 
+    background: #474949; 
+    border: 3px solid #b8bebe; 
+    min-height: 8px; 
+    padding: 4px 8px; 
+    border-radius: 2px; 
+    font-weight: 600; 
+    font-family: plex-sans,sans-serif; 
+    font-size: 12px; 
+    line-height: 14px; 
+    margin: 0; 
+    box-sizing: border-box; 
+    cursor: pointer; 
+    width:120px;
+    } 
+    
+.button:hover{ 
+    background-color: #05b3a5; 
+    border: 3px solid #05e4d2; 
+    box-sizing:border-box; 
+} 
+    
+.buttonChico{ 
+    color: #fff; 
+    background: #474949; 
+    border: 3px solid #b8bebe; 
+    min-height: 8px; 
+    padding: 4px 8px; 
+    border-radius: 2px; 
+    font-weight: 600; 
+    font-family: plex-sans,sans-serif; 
+    font-size: 12px; 
+    line-height: 14px; 
+    margin: 0; 
+    box-sizing: border-box; 
+    cursor: pointer; 
+    width:60px;
+    } 
+    
+.buttonChico:hover{ 
+    background-color: #05b3a5; 
+    border: 3px solid #05e4d2; 
+    box-sizing:border-box; 
+} 
+    
+
+@media (max-width: 480px){
+    .container{
+        width:90%;  
+    }
+    .activities{
+        width:90%;  
+        display: flex;
+        flex-flow:column nowrap;
+        align-items: center;
+        align-content: center;
+        border: 0px solid  #373838; 
+        background-color: #272929;
+        margin: 2px;
+    }
+    .activities h2{
+        color: #31b3b3;
+        font-size: 14px;
+        align-items: center;
+    }
+    
+    
+    .activities label{
+        color: #ffffff;
+        font-size: 12px;
+    }
+    
+    .activities p{
+        color: #31b3b3;
+        font-size: 12px;
+    }
+    
+    .activities h4{
+        color: #ec6666;
+        font-size: 12px;
+        font-style: italic;
+    }
+    
+    .activities select{
+        font-size: 10px;
+        display: flex;
+        flex-flow:column nowrap;
+        width: 250px;
+    }
+    
+    .activities input{
+        font-size: 12px;
+        color: #31b3b3;
+        display: flex;
+        flex-flow:column nowrap;
+        width: 250px;
+        font-weight: bold;
+    }
+} 
+

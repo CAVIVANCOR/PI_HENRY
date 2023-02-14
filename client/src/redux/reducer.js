@@ -23,6 +23,7 @@ const rootReducer = (state=initialState,action)=>{
         case GET_COUNTRY_BY_ID:
             return {...state, countryDetail: action.payload};
         case GET_COUNTRIES_BY_NAME:
+            console.log("GET_COUNTRIES_BY_NAME",action.payload);
             return {...state, countries: action.payload};
         case GET_ACTIVITIES_TURISTICS:
             return {...state, activities: action.payload};
@@ -35,10 +36,10 @@ const rootReducer = (state=initialState,action)=>{
             let copiaCountriesA = [...state.countries];
             let copiaCountriesAllA = [...state.countriesALL];
             let copiaActivities = [...state.activities];
-            let arrayCountries = copiaActivities.map((e)=>e.countries).flat();
-            let arrayCountries2 = arrayCountries.map((e)=>e.name);
-            const countriesUnicas = arrayCountries2.filter((item,index)=>{
-                return (arrayCountries2.indexOf(item) === index);
+            console.log('copiaActivities',copiaActivities);
+            let arrayCountries = copiaActivities.filter(a=>a.name===action.payload).map((e)=>e.countries).flat().map((e)=>e.name);
+            const countriesUnicas = arrayCountries.filter((item,index)=>{
+                return (arrayCountries.indexOf(item) === index);
             })
             let countriesByContinentA = action.payload === "Todos" ? copiaCountriesAllA : copiaCountriesA.filter((e)=>(countriesUnicas.includes(e.name)))
             return {...state, countries: countriesByContinentA}

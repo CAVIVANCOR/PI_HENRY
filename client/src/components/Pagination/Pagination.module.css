@@ -1,11 +1,13 @@
 .pagination{
     display:flex;
     flex-direction: column;
-    margin:15px;
-    padding: 15px;
     align-items: center;
-    gap: 5px;
+    border: 5px solid  #373838; 
+    background-color: #272929;
+}
 
+.pagination p{
+    color:#fff;
 }
 
 .paginationList{
@@ -18,12 +20,15 @@
     gap: 5px;
 }
 
+.paginationList p{
+    color:#bbb1b1;
+    font-size: 14px;
+}
 
 .disabled {
     cursor: not-allowed;
     pointer-events: none;
     opacity: 0,6;
-
     color: #cecaca; 
     background: #e1e2e2; 
     border: 3px solid #dadddd; 

@@ -10,7 +10,7 @@ export default function Country(props) {
       <Link to={`/detail/${props.id}`}>
         <img className={styles.countryImage} src={props.flags} alt={props.name} />
         <div className={styles.countryInfo}>
-          <p>{props.name}</p>
+          <h2> <span>{props.name}</span> </h2>
           <p>{props.continent}</p>
         </div>
       </Link>

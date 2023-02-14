@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 export const NavContainer = styled.nav`
+h1{
+  color: yellow;
+
+}
   h2{
     font-size: 2rem;
     color: white;
@@ -9,6 +13,11 @@ export const NavContainer = styled.nav`
       font-weight: bold;
     }
   }
+
+  h2:hover{
+    color:#31b3b3;
+  }
+  
   padding: .4rem;
   background-color: #333;
   display:flex;

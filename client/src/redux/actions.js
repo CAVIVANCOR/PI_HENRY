@@ -12,23 +12,32 @@ const { GET_ALL_COUNTRIES,
 
 export const getAllCountries=()=>{
     return async function(dispatch){
-        let countriesAll = await axios.get('http://localhost:3001/countries');
-        return dispatch({
-            type:GET_ALL_COUNTRIES,
-            payload: countriesAll.data
-        });
+        try {
+            let countriesAll = await axios.get('http://localhost:3001/countries');
+            return dispatch({
+                type:GET_ALL_COUNTRIES,
+                payload: countriesAll.data
+            });
+        } catch (error) {
+            console.log(error);
+        }
+ 
     };
 };
 
 export const getCuntryById=(id)=>{
     return async function(dispatch){
-        let country = await axios.get('http://localhost:3001/countries/'+id);
-        return dispatch({
-            type:GET_COUNTRY_BY_ID,
-            payload:country.data
-        })
-    }
-}
+        try {
+            let country = await axios.get('http://localhost:3001/countries/'+id);
+            return dispatch({
+                type:GET_COUNTRY_BY_ID,
+                payload:country.data
+             });
+        } catch (error) {
+            console.log(error);
+        }  
+    };
+};
 
 export const getCountriesByName=(name)=>{
     return async function(dispatch){
@@ -39,18 +48,22 @@ export const getCountriesByName=(name)=>{
                 payload:countries.data
             });
         } catch (error) {
-            console.log(error);
+            console.log('getCountriesByName',error.response.data.error);
         };
     };
 };
 
 export const getActivitiesTuristic=()=>{
     return async function(dispatch){
-        let activitiesTuristic = await axios.get('http://localhost:3001/activities');
-        return dispatch({
-            type:GET_ACTIVITIES_TURISTICS,
-            payload: activitiesTuristic.data
-        })
+        try {
+            let activitiesTuristic = await axios.get('http://localhost:3001/activities');
+            return dispatch({
+                type:GET_ACTIVITIES_TURISTICS,
+                payload: activitiesTuristic.data
+            });
+        } catch (error) {
+            console.log(error);
+        }
     }
 }
 
@@ -63,6 +76,7 @@ export const filterCountriesByContinent = (continente)=>{
 };
 
 export const filterCountriesByActivities = (activity)=>{
+   // console.log('filterCountriesByActivities',activity);
     return {
         type: FILTER_COUNTRIES_BY_ACTIVITY,
         payload: activity
@@ -84,12 +98,17 @@ export const OrderByPoblation = (orden)=>{
 };
 
 export const agregarActividadTuristica = (activity)=>{
-    console.log('activity',activity);
+    //console.log('activity',activity);
     return async function(dispatch){
-        let activityTuristic = await axios.post('http://localhost:3001/activities', activity);
-        return dispatch({
-            type:ADD_ACTIVITY_TURISTIC,
-            payload: activityTuristic.data
-        })
+        try {
+            let activityTuristic = await axios.post('http://localhost:3001/activities', activity);
+            return dispatch({
+                type:ADD_ACTIVITY_TURISTIC,
+                payload: activityTuristic.data
+            });  
+        } catch (error) {
+            console.log(error);
+        }
+
     }
 };

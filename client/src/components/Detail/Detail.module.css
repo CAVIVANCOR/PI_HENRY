@@ -1,7 +1,7 @@
 .container{
-    padding:10px;
-    margin:15px;
-    width:40%;
+    padding:5px;
+    margin:5px;
+    width:fit-content;
     background-color: rgb(240, 236, 236);
     display:flex;
     flex-direction: column;
@@ -31,8 +31,8 @@ p{
 
 .countryImage{
     max-width: 100%;
-    width: 250px;
-    height: 150px;
+    width: 350px;
+    height: 200px;
     border-radius: 10px;
     box-shadow: 0 0 10px 0;
 }
