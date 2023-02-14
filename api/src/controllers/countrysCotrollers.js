@@ -13,7 +13,7 @@ const getCountries = async () => {
 };
 
 const findCountries = async (name) => {
-    if (!name) throw Error("Error: Debe existir un valor en el Atributo name, name=null..!");
+   if (!name) throw Error("Error: Debe existir un valor en el Atributo name, name=null..!");
     let countries = await Countries.findAll({
         where:{
             name:{
@@ -21,7 +21,7 @@ const findCountries = async (name) => {
             }
         }
     });
-    if (countries.length===0) throw Error(`Error: No se encontro ningun Pais con el nombre: ${name} !`);
+    //if (countries.length===0) throw Error(`Error: No se encontro ningun Pais con el nombre: ${name} !`);
     return countries;
 };
 
@@ -50,7 +50,7 @@ const getDataRestCountries = async () =>{
             let subregion = !c.subregion ? 's/d': c.subregion;
             let reg = {
                 id: c.cca3,
-                name: c.name.official,
+                name: c.name.common,
                 flags: c.flags.png,
                 continent: continent,
                 capital: capital,

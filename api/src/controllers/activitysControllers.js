@@ -13,7 +13,7 @@ const getActivities = async () =>{
         {
             include:{
                 model:Countries,
-                attributes:["name","continent"],
+                attributes:["name","continent","flags"],
                 through:{
                     attributes:[],
                 }
