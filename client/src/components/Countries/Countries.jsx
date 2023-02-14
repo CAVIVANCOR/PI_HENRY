@@ -2,7 +2,7 @@ import styles from './Countries.module.css';
 import React, { useEffect, useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import Country from '../Country/Country';
-import { filterCountriesByActivities, filterCountriesByContinent, getActivitiesTuristic, getAllCountries, getCountriesByName, OrderByName, OrderByPoblation } from '../../redux/actions.js';
+import { agregarErrorSearch, filterCountriesByActivities, filterCountriesByContinent, getActivitiesTuristic, getAllCountries, getCountriesByName, OrderByName, OrderByPoblation } from '../../redux/actions.js';
 import { v4 } from 'uuid';
 import Pagination from '../Pagination/Pagination';
 import Search from '../Search/Search';
@@ -14,11 +14,12 @@ export default function Countries() {
   const [actividadElegida,setActividadElegida]=useState("");
   const [continenteElegido,setContinenteElegido]=useState("");
   const [ordenado, setOrdenado]=useState("");
-  const [errorName,setErrorName] = useState("");
 
   const dispatch = useDispatch();
   const countries = useSelector((state)=>state.countries);
   const activities = useSelector((state)=>state.activities);
+  const errorSearch = useSelector((state)=>state.errorSearch);
+
   const navigate = useHistory();
   const location= useLocation();
 
@@ -123,13 +124,13 @@ export default function Countries() {
   navigate.push('/home');
   dispatch(getAllCountries());
   dispatch(getActivitiesTuristic());
-  setErrorName("");
+  dispatch(agregarErrorSearch(""))
   }
   
   let totalCountries = 0;
   let lastIndex = 0;
   let firstIndex = 0;
-  let countriesMostrar = 0;
+  let countriesMostrar = [];
 
   if (currentPage===1){
     totalCountries = countries.length;
@@ -161,7 +162,7 @@ export default function Countries() {
           <button className={styles.button} onClick={handleMostrarTodos} >Todos</button>
         </div>
         <div className={styles.search}>
-          <Search errorName={errorName} setErrorName={setErrorName}/>
+          <Search/>
         </div>
         <div className={styles.filter}>
             <div>

@@ -8,6 +8,7 @@ import { validateTouringInput } from './validate';
 
 export default function TouringForm() {
   const countries = useSelector((state)=> state.countries);
+  const activities = useSelector((state)=> state.activities);
   const dispatch = useDispatch();
   const navigation = useHistory();
 
@@ -132,6 +133,7 @@ export default function TouringForm() {
       navigation.push('/home');
       dispatch(getAllCountries());
       dispatch(getActivitiesTuristic());
+      //console.log('activities',activities);
     };
   };
 

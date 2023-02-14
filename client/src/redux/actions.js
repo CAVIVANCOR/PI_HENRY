@@ -7,7 +7,8 @@ const { GET_ALL_COUNTRIES,
         FILTER_COUNTRIES_BY_ACTIVITY,
         ORDER_COUNTRIES_BY_NAME,
         ORDER_COUNTRIES_BY_POBLATION,
-        ADD_ACTIVITY_TURISTIC
+        ADD_ACTIVITY_TURISTIC,
+        ADD_ERROR_SEARCH
     } = require('./actions-types');
 
 export const getAllCountries=()=>{
@@ -49,6 +50,11 @@ export const getCountriesByName=(name)=>{
             });
         } catch (error) {
             console.log('getCountriesByName',error.response.data.error);
+            return dispatch({
+                type:GET_COUNTRIES_BY_NAME,
+                payload:[],
+                error:error.response.data.error
+            });
         };
     };
 };
@@ -112,3 +118,10 @@ export const agregarActividadTuristica = (activity)=>{
 
     }
 };
+
+export const agregarErrorSearch =(error)=>{
+    return {
+        type: ADD_ERROR_SEARCH,
+        payload: error
+    }
+}

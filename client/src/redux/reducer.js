@@ -6,14 +6,16 @@ import {GET_ALL_COUNTRIES,
         FILTER_COUNTRIES_BY_ACTIVITY,
         ORDER_COUNTRIES_BY_NAME,
         ORDER_COUNTRIES_BY_POBLATION,
-        ADD_ACTIVITY_TURISTIC
+        ADD_ACTIVITY_TURISTIC,
+        ADD_ERROR_SEARCH
     } from './actions-types';
 
 const initialState = {
     countries:[],
     countriesALL:[],
     countryDetail:{},
-    activities:[]
+    activities:[],
+    errorSearch:""
 }
 
 const rootReducer = (state=initialState,action)=>{
@@ -23,8 +25,8 @@ const rootReducer = (state=initialState,action)=>{
         case GET_COUNTRY_BY_ID:
             return {...state, countryDetail: action.payload};
         case GET_COUNTRIES_BY_NAME:
-            console.log("GET_COUNTRIES_BY_NAME",action.payload);
-            return {...state, countries: action.payload};
+            //console.log("GET_COUNTRIES_BY_NAME",action.payload);
+            return {...state, countries: action.payload, errorSearch:action.error};
         case GET_ACTIVITIES_TURISTICS:
             return {...state, activities: action.payload};
         case FILTER_COUNTRIES_BY_CONTINENT:
@@ -89,6 +91,8 @@ const rootReducer = (state=initialState,action)=>{
             return {...state, countries: countriesOrdenadaPoblation}
         case ADD_ACTIVITY_TURISTIC:
                 return state;
+        case ADD_ERROR_SEARCH:
+            return {...state, errorSearch: action.payload}
         default:
             return state;
     }
