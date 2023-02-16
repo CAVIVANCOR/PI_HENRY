@@ -22,8 +22,8 @@ export default function Search({errorName,setErrorName}) {
     }else{
       dispatch(agregarErrorSearch("Debe Ingresar algun Valor"))
     }
-
   };
+  
   return (
     <div className={styles.container}>
       <h2>Buscar por: </h2>

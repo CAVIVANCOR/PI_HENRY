@@ -113,7 +113,12 @@ export const agregarActividadTuristica = (activity)=>{
                 payload: activityTuristic.data
             });  
         } catch (error) {
-            console.log(error);
+            console.log('agregarActividadTuristica',error.response.data.error);
+            return dispatch({
+                type:ADD_ACTIVITY_TURISTIC,
+                payload:[],
+                error:error.response.data.error
+            });
         }
 
     }

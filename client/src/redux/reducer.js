@@ -90,7 +90,7 @@ const rootReducer = (state=initialState,action)=>{
                         })
             return {...state, countries: countriesOrdenadaPoblation}
         case ADD_ACTIVITY_TURISTIC:
-                return state;
+            return {...state, errorSearch:action.error}
         case ADD_ERROR_SEARCH:
             return {...state, errorSearch: action.payload}
         default:

@@ -38,9 +38,6 @@ export default function Countries() {
     dispatch(getActivitiesTuristic());
   },[dispatch,navigate]);
   
-
-
-
   const handleMostrarTodos=()=>{
     setActividadElegida("");
     setContinenteElegido("");
@@ -75,7 +72,6 @@ export default function Countries() {
       countriesMostrar = countries.slice(firstIndex,lastIndex);
     };
   };
-
 
   return (
     <div className={styles.container}>

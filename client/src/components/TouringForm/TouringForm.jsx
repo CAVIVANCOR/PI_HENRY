@@ -10,6 +10,8 @@ export default function TouringForm() {
   const countries = useSelector((state)=> state.countries);
   const dispatch = useDispatch();
   const navigation = useHistory();
+  const errorSearch = useSelector((state)=>state.errorSearch);
+  let actividadCreadaOK="";
 
   const [touringInput,setTouringInput]=useState({
     activity:{
@@ -120,17 +122,20 @@ export default function TouringForm() {
     event.preventDefault();
     if (Object.entries(errorInput).length === 0){
       dispatch(agregarActividadTuristica(touringInput));
-      setTouringInput({
-        activity:{
-          name: "",
-          difficulty: "",
-          duration: "",
-          season: ""},
-        countries: []
-      });
-      navigation.push('/home');
-      dispatch(getAllCountries());
-      dispatch(getActivitiesTuristic());
+      if (errorSearch===""){
+        actividadCreadaOK="Actividad Creada Con Exito";
+        setTouringInput({
+          activity:{
+            name: "",
+            difficulty: "",
+            duration: "",
+            season: ""},
+          countries: []
+        });
+        navigation.push('/home');
+        dispatch(getAllCountries());
+        dispatch(getActivitiesTuristic());
+      };
     };
   };
 
@@ -221,6 +226,7 @@ export default function TouringForm() {
           </div>
           <div>
             {(Object.entries(errorInput).length === 0) && (<button  className={styles.button} type='submit'>Crear Actividad</button>)}
+            {errorSearch!=="" ? <div><p>{errorSearch}</p></div> : <div><p>{actividadCreadaOK}</p></div>}
           </div>
         </form>
       </div>
