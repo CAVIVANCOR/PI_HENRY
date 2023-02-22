@@ -122,7 +122,6 @@ export default function TouringForm() {
     event.preventDefault();
     if (Object.entries(errorInput).length === 0){
       dispatch(agregarActividadTuristica(touringInput));
-      if (errorSearch===""){
         actividadCreadaOK="Actividad Creada Con Exito";
         setTouringInput({
           activity:{
@@ -135,7 +134,6 @@ export default function TouringForm() {
         navigation.push('/home');
         dispatch(getAllCountries());
         dispatch(getActivitiesTuristic());
-      };
     };
   };
 
