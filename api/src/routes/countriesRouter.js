@@ -20,7 +20,6 @@ countriesRouter.get("/", async (req,res)=>{
         }else{
             countries = await getCountries();
         };
-        //console.log('countries router',countries);
         res.status(200).json(countries);
     } catch (error) {
         res.status(400).json({error:error.message});
